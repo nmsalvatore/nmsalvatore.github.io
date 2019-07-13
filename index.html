@@ -1,16 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
-  <title>nmsalvatore</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Task List: OOP</title>
 </head>
 <body>
-  <h1>nmsalvatore</h1>
-  <p>bla bla bla bla</p>
+  <header>
+    <div class="navbar">
+      <div class="container flex jc-space-between ai-center">
+        <h1 class="main-header">
+          <a class="nav-link" href="#">nmsalvatore.github.io</a>
+        </h1>
+        <nav>
+          <ul class="flex nav-ul">
+            <li class="nav-li"><a class="nav-link" href="#">Projects</a></li>
+            <li class="nav-li"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-li"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="wrapper">
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+        </div>
+        <section class="primary">
+          <form id="task-form">
+            <div class="input-field" id="add-task">
+              <input id="task-input" type="text" name="Add Task" placeholder="Enter a new task">
+            </div>
+          </form>
+        </section>
+        <section class="secondary">
+          <div class="collection-wrapper">
+            <ul class="collection" id="task-ul">
+            </ul>
+          </div>
+          <div class="collection-footer flex jc-space-between">
+            <small class="task-number md-grey" id="tasks-incomplete"></small>
+            <small class="task-number lt-grey" id="tasks-complete"></small>
+          </div>
+          <div class="hide-show flex jc-center">
+            <img id="toggle-task-visibility" src="img/hide-tasks.png" />
+          </div>
+        </section>
+        <div id="alert" class="modal">
+          <div class="flex flex-column ai-center modal-wrapper">
+            <div class="flex jc-center ai-center modal-header">
+              <h4 >Task List Complete</h4>
+            </div>
+            <p class="modal-content">Great job! All of your tasks have been completed!</p>
+            <p class="modal-content">Your completed tasks are currently being saved in local storage. In order to maintain accurate progress markers, we recommend that you clear the storage of these tasks.</p>
+            <p class="modal-content">Would you like to clear your completed tasks?</p>
+            <div class="btn-wrapper flex jc-space-evenly">
+              <button onclick="view.approveClearTasks()" class="modal-btn yes">Yes, please</button>
+              <button onclick="view.denyClearTasks()" class="modal-btn">No, thank you</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-  <script src="app.js"></script>
+  <script src="js/lodash.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
