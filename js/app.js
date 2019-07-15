@@ -65,6 +65,9 @@ const local = {
   clearTasks() {
     localStorage.clear();
   },
+  clearCompleted() {
+    localStorage.removeItem('completed-tasks');
+  },
   toggleTask(targetId) {
     this.retrieveTasks();
     tasks.forEach(function(task, index) {
@@ -109,6 +112,10 @@ const handlers = {
   clearTasks() {
     local.clearTasks();
     view.toggleCollectionOff();
+    view.displayAllTasks();
+  },
+  clearCompleted() {
+    local.clearCompleted();
     view.displayAllTasks();
   },
   toggleTask(e) {
@@ -203,10 +210,12 @@ const view = {
   },
   toggleCollectionOn() {
     completedWrapper.style.display = 'block';
+    clearBtn.style.display = 'inline';
     toggleTaskVisibilityBtn.src = 'img/hide-tasks.png';
   },
   toggleCollectionOff() {
     completedWrapper.style.display = 'none';
+    clearBtn.style.display = 'none';
     toggleTaskVisibilityBtn.src = 'img/show-tasks.png';
   },
   progressBarMove() {
@@ -252,6 +261,10 @@ const view = {
 
     completedTasksAlert.onclick = function() {
       view.toggleCollectionOn();
+    }
+
+    clearBtn.onclick = function() {
+      handlers.clearCompleted();
     }
   }
 }

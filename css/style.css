@@ -358,3 +358,8 @@ small.task-number {
 .hidden {
   display: none;
 }
+
+#clear-btn {
+  cursor: pointer;
+  display: none;
+}
