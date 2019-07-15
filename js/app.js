@@ -9,7 +9,8 @@ const clearBtn = document.getElementById('clear-btn'),
       closeModalBtn = document.getElementById('close-modal-btn'),
       progressContainer = document.querySelector('.progress-container'),
       progressBar = document.querySelector('.progress-bar'),
-      collectionFooter = document.querySelector('.collection-footer');
+      collectionFooter = document.querySelector('.collection-footer'),
+      tertiaryFooter = document.querySelector('.tertiary .collection-footer');
 
 let tasks, 
     completed, 
@@ -211,11 +212,13 @@ const view = {
   toggleCollectionOn() {
     completedWrapper.style.display = 'block';
     clearBtn.style.display = 'inline';
+    tertiaryFooter.style.margin = '20px 30px'
     toggleTaskVisibilityBtn.src = 'img/hide-tasks.png';
   },
   toggleCollectionOff() {
     completedWrapper.style.display = 'none';
     clearBtn.style.display = 'none';
+    tertiaryFooter.style.margin = '0'
     toggleTaskVisibilityBtn.src = 'img/show-tasks.png';
   },
   progressBarMove() {
