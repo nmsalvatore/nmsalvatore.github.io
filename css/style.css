@@ -12,12 +12,15 @@ a,h1,h2,h3,h4,h5,h6,li,ol,p,span,ul {
   font-size: inherit;
 }
 
+a {
+  cursor: pointer;
+}
+
 /* list */
 
 ul.collection {
   margin: 0;
   padding: 0;
-  padding-bottom: 20px;
 }
 
 .collection-item {
@@ -139,11 +142,16 @@ ul.collection {
 .wrapper {
   border-radius: 5px;
   box-shadow: 0 2px 7px -3px;
+  box-sizing: border-box;
   margin: 40px auto;
 }
 
 section.primary {
   padding: 20px 20px 0 20px;
+}
+
+small#tasks-complete {
+  cursor: pointer;
 }
 
 section.secondary {
@@ -160,6 +168,11 @@ section.secondary .collection-header {
 
 section.secondary .secondary-margin {
   margin: 0 20px;
+}
+
+section.tertiary {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
 }
 
 /* navbar */
@@ -340,4 +353,8 @@ small.task-number {
 
 .md-grey {
   color: #666;
+}
+
+.hidden {
+  display: none;
 }

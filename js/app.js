@@ -1,17 +1,21 @@
-/* global variable declaration */
-
 const clearBtn = document.getElementById('clear-btn'),
       taskUl = document.getElementById('task-ul'),
+      completedUl = document.getElementById('completed-ul'),
       form = document.getElementById('task-form'),
       toggleTaskVisibilityBtn = document.getElementById('toggle-task-visibility'),
-      taskWrapper = document.querySelector('.collection-wrapper'),
+      taskWrapper = document.getElementById('collection-wrapper'),
+      completedWrapper = document.getElementById('completed-wrapper'),
       alert = document.getElementById('alert'),
       closeModalBtn = document.getElementById('close-modal-btn'),
       progressContainer = document.querySelector('.progress-container'),
       progressBar = document.querySelector('.progress-bar'),
       collectionFooter = document.querySelector('.collection-footer');
 
-let tasks, completed, progressStartValue, progressEndValue;
+let tasks, 
+    completed, 
+    progressStartValue, 
+    progressEndValue,
+    completedTasksAlert = document.getElementById('tasks-complete');
 
 const local = {
   retrieveTasks() {
@@ -49,19 +53,19 @@ const local = {
     });
     this.storeTasks();
   },
-  deleteTask(targetId) {
-    this.retrieveTasks();
-    tasks.forEach(function(task, index) {
+  deleteCompleted(targetId) {
+    this.retrieveCompleted();
+    completed.forEach(function(task, index) {
       if (targetId == index) {
-        tasks.splice(index, 1);
-        this.storeTasks();
+        completed.splice(index, 1);
+        this.storeCompleted();
       }
     }, this);
   },
   clearTasks() {
     localStorage.clear();
   },
-  toggleCompleted(targetId) {
+  toggleTask(targetId) {
     this.retrieveTasks();
     tasks.forEach(function(task, index) {
       if (targetId == index) {
@@ -73,7 +77,20 @@ const local = {
         this.storeTasks();
       }
     }, this);
-  }
+  },
+  toggleCompleted(targetId) {
+    this.retrieveCompleted();
+    completed.forEach(function(task, index) {
+      if (targetId == index) {
+        if (completed[index].completed === true) {
+          completed[index].completed = false;
+        } else {
+          completed[index].completed = true;
+        }
+        this.storeCompleted();
+      }
+    }, this);
+  },
 }
 
 const handlers = {
@@ -81,92 +98,101 @@ const handlers = {
     let input = document.getElementById('task-input');
     local.addTask(input.value);
     input.value = '';
-    view.displayTasks();
-    view.toggleCollectionOn();
+    view.displayIncompleted();
     e.preventDefault();
   },
-  deleteTask(e) {
+  deleteCompleted(e) {
     let targetId = e.target.parentElement.id;
-    local.deleteTask(targetId);
-    view.displayTasks();
+    local.deleteCompleted(targetId);
+    view.displayAllTasks();
   },
   clearTasks() {
     local.clearTasks();
     view.toggleCollectionOff();
-    view.displayTasks();
+    view.displayAllTasks();
+  },
+  toggleTask(e) {
+    let targetId = e.target.children[0].id;
+    local.toggleTask(targetId);
+    view.displayIncompleted();
+    setTimeout(function() {
+      storeCompletedTasks();
+      view.displayAllTasks();
+    }, 500);
   },
   toggleCompleted(e) {
     let targetId = e.target.children[0].id;
     local.toggleCompleted(targetId);
-    view.displayTasks();
-    setTimeout(function() {
-      storeCompletedTasks();
-      view.displayTasks();
-    }, 500);
-  }
+    storeIncompletedTasks();
+    view.displayAllTasks();
+  },
 }
 
 const view = {
-  displayTasks() {
-    /* reset completed value */
-    completed = 0;
-
-    /* clear collection */
+  displayIncompleted() {
     taskUl.innerHTML = null;
-
-    /* retrieve local storage and convert to array */
     local.retrieveTasks();
 
     tasks.forEach(function(task, position) {
-      /* create list item */
-      let taskLi = document.createElement('li');
-      taskLi.textContent = task.taskText;
-      taskLi.className = 'collection-item flex ai-center jc-space-between';
+      let li = document.createElement('li');
+      li.textContent = task.taskText;
+      li.className = 'collection-item flex ai-center jc-space-between';
 
-      /* create delete button */
       let link = document.createElement('a');
       link.id = position;
       link.className = 'delete-btn';
       link.innerHTML = '<img src="img/option-btn.png" />';
-      taskLi.appendChild(link);
+      li.appendChild(link);
 
-      /* if task complete, add complete class and add to completed count */
       if (task.completed === false) {
-        if (taskLi.classList.contains('completed')) {
-          taskLi.classList.remove('completed');
+        if (li.classList.contains('completed')) {
+          li.classList.remove('completed');
         }
       } else {
-        taskLi.classList.add('completed');
+        li.classList.add('completed');
       }
       
-      /* append list item to collection */
-      taskUl.appendChild(taskLi);
+      taskUl.appendChild(li);
     });
 
-    /* if all tasks are completed, display modal */
-    if (completed === tasks.length) {
-      alert.style.display = 'block';
-    }
-
-    /* display number of tasks to be completed */
-    let incompleteTasksAlert = document.getElementById('tasks-incomplete');
-    if (tasks.length === 1) {
-      incompleteTasksAlert.innerHTML = `<em>${tasks.length} task incomplete</em>`;
-    } else {
-      incompleteTasksAlert.innerHTML = `<em>${tasks.length} tasks incomplete</em>`;
-    }
-
-    /* display number of tasks completed */
     local.retrieveCompleted();
-    let completedTasksAlert = document.getElementById('tasks-complete');
     if (completed.length === 1) {
       completedTasksAlert.innerHTML = `<em>${completed.length} task completed</em>`;
     } else {
       completedTasksAlert.innerHTML = `<em>${completed.length} tasks completed</em>`;
     }
 
-    /* update progress bar */
     view.progressBarMove();
+  },
+  displayCompleted() {
+      completedUl.innerHTML = null;
+      local.retrieveCompleted();
+  
+      completed.forEach(function(task, position) {
+        let li = document.createElement('li');
+        li.textContent = task.taskText;
+        li.className = 'collection-item flex ai-center jc-space-between';
+  
+        let link = document.createElement('a');
+        link.id = position;
+        link.className = 'delete-btn';
+        link.innerHTML = '<img src="img/delete-btn.png" />';
+        li.appendChild(link);
+  
+        if (task.completed === false) {
+          if (li.classList.contains('completed')) {
+            li.classList.remove('completed');
+          }
+        } else {
+          li.classList.add('completed');
+        }
+        
+        completedUl.appendChild(li);
+      });
+  },
+  displayAllTasks() {
+    view.displayIncompleted();
+    view.displayCompleted();
   },
   approveClearTasks() {
     handlers.clearTasks();
@@ -176,12 +202,11 @@ const view = {
     alert.style.display = 'none';
   },
   toggleCollectionOn() {
-    taskWrapper.style.display = 'block';
+    completedWrapper.style.display = 'block';
     toggleTaskVisibilityBtn.src = 'img/hide-tasks.png';
   },
   toggleCollectionOff() {
-    taskWrapper.style.display = 'none';
-    collectionFooter.style.display = 'flex';
+    completedWrapper.style.display = 'none';
     toggleTaskVisibilityBtn.src = 'img/show-tasks.png';
   },
   progressBarMove() {
@@ -194,32 +219,45 @@ const view = {
     } else {
       progressBar.style.borderRadius = '5px 0 0 0';
     }
-    console.log(progressValue);
   },
   loadEventListeners() {
-    document.addEventListener('DOMContentLoaded', view.displayTasks);
+    document.addEventListener('DOMContentLoaded', view.displayAllTasks);
   
     form.addEventListener('submit', handlers.addTask);
   
     taskUl.onclick = function(e) {
       if (e.target.classList.contains('collection-item')) {
+        handlers.toggleTask(e);
+      } else if (e.target.parentElement.classList.contains('delete-btn')) {
+        /* add an option function */
+      }
+    };
+
+
+    completedUl.onclick = function(e) {
+      if (e.target.classList.contains('collection-item')) {
         handlers.toggleCompleted(e);
       } else if (e.target.parentElement.classList.contains('delete-btn')) {
-        handlers.deleteTask(e);
+        handlers.deleteCompleted(e);
       }
     };
   
     toggleTaskVisibilityBtn.onclick = function() {
-      if (taskWrapper.style.display !== 'none') {
-        view.toggleCollectionOff();
-      } else {
+      if (completedWrapper.style.display == 'none') {
         view.toggleCollectionOn();
+      } else {
+        view.toggleCollectionOff();
       }
     };
+
+    completedTasksAlert.onclick = function() {
+      view.toggleCollectionOn();
+    }
   }
 }
 
 view.loadEventListeners();
+view.toggleCollectionOff();
 
 function storeCompletedTasks() {
   local.retrieveCompleted();
@@ -229,6 +267,21 @@ function storeCompletedTasks() {
     if (task.completed === true) {
       tasks.splice(position, 1);
       completed.push(task);
+    }
+  });
+
+  local.storeCompleted()
+  local.storeTasks()
+}
+
+function storeIncompletedTasks() {
+  local.retrieveCompleted();
+  local.retrieveTasks();
+
+  completed.forEach(function(task, position) {
+    if (task.completed === false) {
+      completed.splice(position, 1);
+      tasks.push(task);
     }
   });
 

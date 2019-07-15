@@ -32,18 +32,23 @@
           </form>
         </section>
         <section class="secondary">
-          <div class="collection-wrapper">
+          <div id="collection-wrapper">
             <ul class="collection" id="task-ul">
             </ul>
           </div>
-          <div class="collection-footer flex jc-space-between">
-            <small class="task-number md-grey" id="tasks-incomplete"></small>
+          <div class="collection-footer flex jc-flex-end">
             <small class="task-number lt-grey" id="tasks-complete"></small>
           </div>
-          <div class="hide-show flex jc-center">
-            <img id="toggle-task-visibility" src="img/hide-tasks.png" />
+        </section>
+        <section class="tertiary">
+          <div id="completed-wrapper">
+            <ul class="collection" id="completed-ul">
+            </ul>
           </div>
         </section>
+        <div class="hide-show flex jc-center">
+          <img id="toggle-task-visibility" src="img/hide-tasks.png" />
+        </div>
         <div id="alert" class="modal">
           <div class="flex flex-column ai-center modal-wrapper">
             <div class="flex jc-center ai-center modal-header">
@@ -58,6 +63,21 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="hidden">
+        <br>
+        <br>
+        <hr>
+        <ul>
+          <li>Clean up CSS</li>
+          <li>Clean up JS</li>
+          <li>Fix toggle and alert views</li>
+          <li>Fix delete button</li>
+          <li>Add clear all tasks button at bottom of completedUl</li>
+          <li>Add options for editing</li>
+          <li>Random task generator</li>
+          <li>Add ability to move tasks</li>
+        </ul>
       </div>
     </div>
   </main>
