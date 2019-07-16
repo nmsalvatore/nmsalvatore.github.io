@@ -117,6 +117,7 @@ const handlers = {
   },
   clearCompleted() {
     local.clearCompleted();
+    view.toggleCollectionOff();
     view.displayAllTasks();
   },
   toggleTask(e) {
@@ -210,15 +211,15 @@ const view = {
     alert.style.display = 'none';
   },
   toggleCollectionOn() {
-    completedWrapper.style.display = 'block';
+    completedWrapper.style.display = 'block';   
     clearBtn.style.display = 'inline';
-    tertiaryFooter.style.margin = '20px 30px'
+    tertiaryFooter.style.margin = '20px 30px';
     toggleTaskVisibilityBtn.src = 'img/hide-tasks.png';
   },
   toggleCollectionOff() {
     completedWrapper.style.display = 'none';
     clearBtn.style.display = 'none';
-    tertiaryFooter.style.margin = '0'
+    tertiaryFooter.style.margin = '0';
     toggleTaskVisibilityBtn.src = 'img/show-tasks.png';
   },
   progressBarMove() {
