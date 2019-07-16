@@ -227,10 +227,10 @@ const view = {
     let progressValue = (completed.length / totalTasks) * 100;
     progressBar.style.width = `${progressValue}%`;
   
-    if (progressValue >= 100) {
-      progressBar.style.borderRadius = '5px 5px 0 0';
-    } else {
+    if (progressValue < 100) {
       progressBar.style.borderRadius = '5px 0 0 0';
+    } else {
+      progressBar.style.borderRadius = '5px 5px 0 0';
     }
   },
   loadEventListeners() {
