@@ -37,7 +37,7 @@ ul li {
 /* header */
 
 .site-header {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   grid-column: 2 / 7;
   grid-row: 1 / 2;
   padding-top: 20px;
@@ -107,7 +107,7 @@ ul li {
 /* interactive styles */
 
 .active {
-  color: #78a7ba;
+  color: #666;
 }
 
 .btn {
