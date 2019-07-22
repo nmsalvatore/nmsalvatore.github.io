@@ -52,7 +52,7 @@ ul li {
 
 .nav-ul {
   box-sizing: border-box;
-  color: #ccc;
+  color: #ddd;
   display: flex;
   justify-content: space-evenly;
   margin: 0;
@@ -82,9 +82,8 @@ ul li {
 
 .site-content .collection-wrapper {
   background: #fff;
-  border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0 2px 7px -5px;
+  box-shadow: 0 2px 7px -2px;
   font-size: .8rem;
   padding: 20px;
   padding-top: 40px;
@@ -107,7 +106,7 @@ ul li {
 /* interactive styles */
 
 .active {
-  color: #666;
+  color: #999;
 }
 
 .btn {
