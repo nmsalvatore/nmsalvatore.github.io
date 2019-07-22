@@ -82,8 +82,8 @@ ul li {
 
 .site-content .collection-wrapper {
   background: #fff;
+  border: 1px solid #aaa;
   border-radius: 5px;
-  box-shadow: 0 2px 7px -2px;
   font-size: .8rem;
   padding: 20px;
   padding-top: 40px;
@@ -106,7 +106,7 @@ ul li {
 /* interactive styles */
 
 .active {
-  color: #999;
+  color: #666;
 }
 
 .btn {
