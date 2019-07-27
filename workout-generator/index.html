@@ -9,26 +9,28 @@
   <script src="https://kit.fontawesome.com/e50da3179f.js"></script>
   <title>workout generator</title>
 </head>
-<body class="container">
-  <header class="site-header">
-    <h1 class="primary-header">workout generator</h1>
-    <nav>
-      <ul class="nav-ul">
-        <li id="rehab-btn" class="active">Rehab</li>
-        <li id="crossfit-btn">Crossfit</li>
-        <li id="custom-btn">Custom</li>
+<body class="grid-container">
+  <header class="flex column xy-center">
+    <h1 class="primary-heading">workout generator</h1>
+    <nav class="navbar">
+      <ul class="collection flex space-evenly">
+        <li class="collection-item active">rehab</li>
+        <li class="collection-item">crossfit</li>
+        <li class="collection-item">mobility</li>
+        <li class="collection-item">custom</li>
       </ul>
     </nav>
   </header>
-  <main class="site-content">
+  <main class="flex xy-center">
     <div class="collection-wrapper">
       <div id="movement-collection">
       </div>
-      <div class="collection-footer">
-        <a id="redo-btn" class="btn"><i class="fas fa-redo"></i></a>
-      </div>
     </div>
   </main>
+  <footer class="flex xy-center">
+    <a id="redo-btn" class="btn flex xy-center"><i class="fas fa-redo"></i></a>
+  </footer>
+
   <script src="app.js"></script>
 </body>
 </html>
