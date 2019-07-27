@@ -65,9 +65,6 @@ const mobility = [
   ]
 
 function displayWorkout(movementGroup) {
-
-// Add a function that displays movements based on what tab is active.
-
   const navUl = document.querySelector('.navbar .collection');
 
   for (let i = 0; i < 4; i++) {
