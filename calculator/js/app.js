@@ -1,25 +1,21 @@
-const sumOfPurchases = document.getElementById('sum-of-purchases');
-const billSubtotal = document.getElementById('bill-subtotal');
-const billTotal = document.getElementById('bill-total');
-const tipAmount = document.getElementById('tip-amount');
-const form = document.getElementById('calculation-form');
-const finalTotal = document.getElementById('final-total');
+const purchases = document.getElementById('purchaseSum');
+const subtotal = document.getElementById('subtotal');
+const total = document.getElementById('total');
+const tip = document.getElementById('tip');
+const form = document.querySelector('.form');
+const displayTotal = document.getElementById('displayTotal');
 
-const displayPersonalSubtotal = document.getElementById('display-personal-subtotal');
-const displayTax = document.getElementById('display-tax');
-const displayTip = document.getElementById('display-tip');
+const calculate = () => {
+  let percentage = purchases.value / subtotal.value;
+  let totalOwedNoTip = total.value * percentage;
+  let tipOwed = totalOwedNoTip * (tip.value * .01);
+  let totalOwed = totalOwedNoTip + tipOwed;
 
-const calculateBillPortion = () => {
-  let personalPercentage = sumOfPurchases.value / billSubtotal.value;
-  let personalTotalWithoutTip = billTotal.value * personalPercentage;
-  let personalTip = personalTotalWithoutTip * (tipAmount.value * .01);
-  let personalTotalWithTip = personalTotalWithoutTip + personalTip;
-
-  if (isNaN(personalTotalWithTip)) {
-    finalTotal.innerText = "$0.00";
+  if (isNaN(totalOwed)) {
+    displayTotal.innerText = '$0.00';
   } else {
-    finalTotal.innerText = "$" + personalTotalWithTip.toFixed(2);
+    displayTotal.innerText =  `$${totalOwed.toFixed(2)}`;
   }
 }
 
-form.addEventListener('keyup', calculateBillPortion);
+form.addEventListener('keyup', calculate);
