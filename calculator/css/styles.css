@@ -102,10 +102,8 @@ body {
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   width: 320px;
-  height: 70%;
   padding-bottom: 1rem;
 }
 
