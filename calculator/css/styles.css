@@ -38,10 +38,13 @@ label {
 }
 
 .page-header {
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  padding: 1.5rem;
+  box-shadow: 0 2px 3px #ddd;
 }
 
 .page-content {
@@ -58,12 +61,10 @@ label {
   color: var(--black);
   font-size: 1.1rem;
   font-weight: 700;
-  padding: 1rem;
 }
 
 .menu-icon {
   cursor: pointer;
-  padding: 1rem;
 }
 
 .material-icons.md-light {
