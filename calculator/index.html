@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>What Do I Owe?</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="container">
+  <header class="page-header">
+    <h1>whatdo<span style="font-weight: 400">.io</span></h1>
+    <i class="menu-icon material-icons md-light">menu</i>
+  </header>
+  <main class="page-content">
+    <form id="calculation-form" class="form-content">
+      <div class="form-section">
+        <label class="form-label" for="sum-of-purchases">Sum of your purchases:</label>
+        <div class="form-input">
+          <span class="left-symbol">$</span>
+          <input id="sum-of-purchases" class="right-input" type="number" placeholder="0.00"/>
+        </div>
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="bill-subtotal">Bill Subtotal:</label>
+        <div class="form-input">
+          <span class="left-symbol">$</span>
+          <input id="bill-subtotal" class="right-input" type="number" placeholder="0.00"/>
+        </div>
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="bill-total">Bill Total:</label>
+        <div class="form-input">
+          <span class="left-symbol">$</span>
+          <input id="bill-total" class="right-input" type="number" step=".01" placeholder="0.00"/>
+        </div>
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="tip-amount">Tip Amount:</label>
+        <div class="form-input">
+          <input id="tip-amount" class="left-input" type="number" value="20" placeholder="0"/>
+          <span class="right-symbol">%</span>
+        </div>
+      </div>
+    </form>
+    <div class="results">
+      <!-- <div class="results-breakdown">
+        <p>
+          <span id="display-personal-subtotal">$0.00</span> + <span id="display-tax">$0.00</span> + 
+          <span id="display-tip">$0.00</span>
+        </p>
+      </div> -->
+      <div class="results-main">
+        <h2 class="results-header">You owe:</h2>
+        <p id="final-total">$0.00</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

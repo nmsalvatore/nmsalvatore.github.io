@@ -67,7 +67,7 @@ const mobility = [
 function displayWorkout(movementGroup) {
   const navUl = document.querySelector('.navbar .collection');
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < navUl.children.length; i++) {
     if (navUl.children[i].classList.contains('active')) {
       movementGroup = navUl.children[i].textContent;
     } 
@@ -85,12 +85,21 @@ function displayWorkout(movementGroup) {
       createNewList(rehab.neck);
       createNewList(rehab.wrists);
       createNewList(getRandomMovements(rehab.back, 3));
-      createNewList(getRandomMovements(rehab.core, 2));
-      createNewList(getRandomMovements(rehab.chest, 1));
-      createNewList(getRandomMovements(rehab.hips, 3));
       break;
     case 'mobility':
       createNewList(getRandomMovements(mobility, 5));
+      break;
+    case 'crossfit':
+      createNewList(createCrossfitWod());
+      break;
+    case 'custom':
+        createNewList(rehab.neck);
+        createNewList(rehab.wrists);
+        createNewList(getRandomMovements(rehab.back, 3));
+        createNewList(getRandomMovements(rehab.core, 2));
+        createNewList(getRandomMovements(rehab.chest, 1));
+        createNewList(getRandomMovements(rehab.hips, 3));
+        break;
   }
 
   function createNewList(movementType) {
@@ -98,6 +107,7 @@ function displayWorkout(movementGroup) {
     movementUl.className = 'collection';
 
     movementType.forEach(function createListItems(movement) {
+      let mvmt;
       const movementLi = document.createElement('li');
       movementLi.className = 'collection-item';
      
@@ -147,7 +157,10 @@ function loadEventListeners() {
 
   function selectCollectionType(e) {
     toggleActivityClass();
-    e.target.classList.add('active');
+
+    if (e.target.classList.contains('collection-item')) {
+      e.target.classList.add('active');
+    }
 
     const movementGroup = e.target.textContent;
     displayWorkout(movementGroup);
@@ -158,3 +171,62 @@ function loadEventListeners() {
 }
 
 loadEventListeners();
+
+// -----------------------------------------------------------
+
+const crossfit = {
+  bodyweight: [
+    'pushups',
+    'pullups',
+    'air squats',
+    'toes to bar',
+    'box jumps',
+    'situps',
+  ],
+  lift: [
+    'snatch',
+    'clean',
+    'jerk',
+    'deadlift',
+    'back squat',
+    'front squat',
+    'push press',
+    'strict press',
+    'bench press'
+  ],
+  conditioning: [
+    'kettlebell swings',
+    'double unders',
+  ]
+}
+
+function createCrossfitWod() {
+  let num, movements, all;
+
+  (function compileMovements() {
+    all = [];
+    for (let key in crossfit) {
+      crossfit[key].forEach(function(movement) {
+        all.push(movement);
+      });
+    }
+  })();
+
+  num = Math.floor(Math.random() * 2) + 2;
+  movements = getRandomMovements(all, num);
+
+  (function checkMovementType() {
+    movements.forEach(function(movement) {
+      for (let key in crossfit) {
+        if (crossfit[key].includes(movement)) {
+          console.log( key );
+        }
+      }
+    });
+  })();
+
+  console.log( movements );
+  return movements;
+}
+
+createCrossfitWod();
