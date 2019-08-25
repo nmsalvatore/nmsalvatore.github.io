@@ -15,10 +15,11 @@ const calculate = () => {
   let tipOwed = totalOwedNoTip * (tip.value * .01);
   let totalOwed = totalOwedNoTip + tipOwed;
 
-  if (isNaN(totalOwed) || !isFinite(totalOwed) || (purchases.value > subtotal.value) || (subtotal.value > total.value) || (purchases.value < 0) || (subtotal.value < 0) || (total.value < 0)) {
+  if (isNaN(totalOwed) || !isFinite(totalOwed)) {
     displayTotal.innerText = '$0.00';
     displayTax.innerText = 'Tax: $0.00';
     displayTip.innerText = 'Tip: $0.00';
+    console.log(totalOwed);
   } else {
     displayTotal.innerText = `$${totalOwed.toFixed(2)}`;
     displayTax.innerText = `Tax: $${taxOwed.toFixed(2)}`;
