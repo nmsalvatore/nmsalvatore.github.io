@@ -19,7 +19,6 @@ const calculate = () => {
     displayTotal.innerText = '$0.00';
     displayTax.innerText = 'Tax: $0.00';
     displayTip.innerText = 'Tip: $0.00';
-    console.log(totalOwed);
   } else {
     displayTotal.innerText = `$${totalOwed.toFixed(2)}`;
     displayTax.innerText = `Tax: $${taxOwed.toFixed(2)}`;
