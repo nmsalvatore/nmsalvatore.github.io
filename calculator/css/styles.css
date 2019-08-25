@@ -14,6 +14,7 @@
 
 body {
   background: #fff;
+  color: #444;
   font-family: Roboto, sans-serif;
   font-size: 16px;
 }
@@ -57,7 +58,6 @@ body {
 .grid_header h1 {
   cursor: default;
   display: inline;
-  color: var(--black);
   font-size: 1.1rem;
   font-weight: 700;
 }
@@ -70,17 +70,18 @@ body {
 .results--header,
 #displayTotal {
   text-align: center;
-  color: #444;
 }
 
-.results--header {
-  font-size: 16px;
+.results--breakdown {
   font-weight: 500;
-  padding-bottom: 0.2rem;
+}
+
+.results--breakdown p:first-child {
+  padding-bottom: .4rem;
 }
 
 #displayTotal {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
 }
 
@@ -120,6 +121,7 @@ body {
 .input--right,
 .input--left {
   background: #f2f2f2;
+  color: #444;
   border: none;
   text-align: center;
   height: 2.5rem;
@@ -145,11 +147,13 @@ body {
 
 .symbol--left,
 .symbol--right {
+  font-weight: 500;
   text-align: center;
   height: 2.5rem;
   line-height: 2.5rem;
   width: 3rem;
 }
+
 .symbol--left {
   background: #a3cfbe;
   color: #33584a;
@@ -167,4 +171,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .results {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 248px;
 }
