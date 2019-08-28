@@ -1,6 +1,16 @@
 /* -------------------
       global styles
    ------------------- */
+:root {
+  --white: #fff;
+  --lt-green: #a3cfbe;
+  --drk-green: #33584a;
+  --lt-blue: #a3cacf;
+  --drk-blue: #303c3e;
+  --md-blue: #6e7677;
+  --lt-grey: #f2f2f2;
+  --drk-grey: #444;
+}
 
 :focus {
   outline: none;
@@ -13,8 +23,8 @@
 }
 
 body {
-  background: #fff;
-  color: #303c3e;
+  background: var(--white);
+  color: var(--drk-blue);
   font-family: Roboto, sans-serif;
   font-size: 16px;
 }
@@ -25,7 +35,8 @@ body {
 
 .grid {
   display: grid;
-  grid-template-rows: 70px 1fr 70px;
+  grid-template-rows: 70px 1fr min-content 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
   height: 100vh;
 }
 
@@ -35,7 +46,7 @@ body {
   align-items: center;
   padding: 1rem 1.5rem;
   grid-row: 1;
-  grid-column: 1;
+  grid-column: 1 / 6;
 }
 
 .grid_main {
@@ -45,8 +56,9 @@ body {
   align-items: center;
   padding-top: 1rem;
   padding-bottom: 2.5rem;
-  grid-row: 2;
-  max-height: 540px;
+  grid-row: 3 / 4;
+  grid-column: 1 / 6;
+  height: 100%;
 }
 
 /* ----------------
@@ -54,12 +66,19 @@ body {
    ---------------- */
 
 .grid_header h1 {
-  color: #303c3e;
   cursor: default;
   display: inline;
   font-family: 'Roboto Slab', serif;
   font-size: 1.3rem;
   font-weight: 700;
+}
+
+.logo {
+  color: var(--lt-blue);
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-top: 5.9rem;
 }
 
 .form h3 {
@@ -86,16 +105,41 @@ body {
   font-weight: 700;
 }
 
+#menu--primary li {
+  font-weight: 500;
+  font-size: 1.5rem;
+  list-style: none;
+}
+
 /* -----------
       icons
    ----------- */
 
-.menu_icon {
+.material-icons {
   cursor: pointer;
 }
 
-.material-icons.md-light {
-  color: var(--black);
+.material-icons.md-dark {
+  color: var(--drk-blue);
+}
+
+#calculatorIcon {
+  cursor: pointer;
+  position: absolute;
+  right: -35px;
+  top: 7px;
+  /* animation: calculatorBounce 1s ease-in-out infinite; */
+}
+
+.dropdown {
+  position: relative;
+}
+
+.down_arrow {
+  height: 70%;
+  position: absolute;
+  top: 5px;
+  right: 115px;
 }
 
 /* -------------------
@@ -106,23 +150,27 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 320px;
+  width: 300px;
+  height: 100%;
   padding-bottom: 2rem;
 }
 
 .form--item {
   padding: 1.2vh;
+  height: 100%;
 }
 
 .form--input-wrapper {
+  position: relative;
+  height: 100%;
   display: flex;
   padding-top: .2rem;
 }
 
 .input--right,
 .input--left {
-  background: #f2f2f2;
-  color: #444;
+  background: var(--lt-grey);
+  color: var(--dark-grey);
   border: none;
   text-align: center;
   height: 2.5rem;
@@ -156,13 +204,13 @@ body {
 }
 
 .symbol--left {
-  background: #a3cfbe;
-  color: #33584a;
+  background: var(--lt-green);
+  color: var(--drk-green);
 }
 
 .symbol--right {
-  background: #a3cacf;
-  color: #303c3e;
+  background: var(--lt-blue);
+  color: var(drk-blue);
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -176,4 +224,101 @@ input[type=number]::-webkit-outer-spin-button {
   justify-content: space-between;
   align-items: center;
   width: 248px;
+}
+
+/* ----------
+      menu
+   ---------- */
+
+#menu--primary {
+  flex-direction: column;
+  align-items: flex-end;
+  border-left: 1rem solid var(--lt-blue);
+  background: var(--lt-grey);
+  height: calc(100% - 140px);
+  width: 100%;
+  padding: 4rem;
+  position: absolute;
+  top: 70px;
+  right: 0;
+}
+  
+#menu--primary > li {
+  margin-top: 1.5rem;
+}
+
+#menu--secondary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: var(--md-blue);
+}
+
+#menu--secondary > li {
+  margin-top: 0.5rem;
+}
+
+#menu--secondary li:first-child {
+  margin-top: 1.5rem;
+}
+
+/* ----------------
+      animations
+   ---------------- */
+
+@keyframes calculatorBounce {
+  0% {top: 7px}
+  50% {top: 4px}
+  100% {top: 7px}
+}
+
+/* -------------------
+      media queries
+   ------------------- */
+
+@media only screen and (min-width: 768px) {
+  .grid_main {
+    grid-column: 1 / 4;
+  }
+
+  .grid_header {
+    grid-column: 1 / 4;
+  }
+
+  #menuIcon {
+    display: none;
+  }
+
+  .menu--container {
+    grid-column: 4 / 6;
+    grid-row: 1 / 6;
+  }
+
+  #menu--primary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-left: 1rem solid var(--lt-blue);
+    background: var(--lt-grey);
+    height: 100%;
+    width: 100%;
+    padding: 4rem;
+    position: static;
+    top: 0;
+    right: 0;
+  }
+}
+
+/* --------------
+      unsorted
+   -------------- */
+
+#addItems {
+  display: none;
+  background: var(--lt-grey);
+  width: 100%;
+  min-height: 7.5rem;
+  grid-row: 2;
+  grid-column: 1 / 6;
+  margin-bottom: 1.5rem;
 }

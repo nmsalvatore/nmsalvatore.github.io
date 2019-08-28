@@ -12,15 +12,32 @@
 <body class="grid">
   <header class="grid_header">
     <h1>wudda<span style="font-weight: 400">.io</span></h1>
-    <i class="menu_icon material-icons md-light">menu</i>
+    <i id="menuIcon" class="material-icons md-dark">menu</i>
   </header>
+  <nav class="menu--container">
+    <ul id="menu--primary">
+      <li>About</li>
+      <li class="dropdown">Calculators</li>
+        <ul id="menu--secondary">
+          <li>Portion</li>
+          <li>Split</li>
+          <li>Tip</li>
+        </ul>
+      <li>Contact</li>
+      <span class="logo">w.</span>
+    </ul>
+  </nav>
+  <div id="addItems">
+
+  </div>
   <main class="grid_main">
     <form class="form">
       <div class="form--item">
-        <h3>Sum of your purchases:</h3>
+        <h3 id="sumHeading">Sum of your purchases:</h3>
         <div class="form--input-wrapper">
           <span class="symbol--left">$</span>
           <input id="purchaseSum" class="input--right" type="number" placeholder="0.00"/>
+          <img id="calculatorIcon" alt="Calculator Icon" src="img/calculator.png"/>
         </div>
       </div>
       <div class="form--item">

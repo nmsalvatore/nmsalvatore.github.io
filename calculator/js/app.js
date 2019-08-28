@@ -29,3 +29,17 @@ const calculate = () => {
 
 calculate();
 form.addEventListener('keyup', calculate);
+
+const menuIcon = document.getElementById('menuIcon');
+const menu = document.getElementById('menu--primary');
+const gridMain = document.querySelector('.grid_main'); 
+
+menuIcon.addEventListener('click', () => {
+  if (menu.style.display === 'flex') {
+    menu.style.display = 'none';
+    gridMain.style.display = 'flex';
+  } else {
+    menu.style.display = 'flex';
+    gridMain.style.display = 'none';
+  }
+});
