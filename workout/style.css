@@ -1,0 +1,73 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	color: #222;
+	font-family: Roboto, Arial, sans-serif;
+}
+
+strong {
+	font-weight: 600;
+}
+
+h1 {
+	font-size: inherit;
+}
+
+li {
+	list-style-type: none;
+}
+
+ul {
+	margin-bottom: 1.5vh;
+}
+
+.container {
+	width: 100vw;
+	height: 100vh;
+
+	display: grid;
+	grid-template-rows: 10vh 1fr 10vh;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas: "header header header"
+						 "main main main"
+						 "footer footer footer"
+}
+
+.bike,
+.strength {
+	font-weight: 600;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	background: #eee;
+	font-family: "Roboto Slab";
+	grid-area: header;
+}
+
+.site-title {
+	font-size: 2.5vh;
+	padding: 4vh;
+}
+
+#workout {
+	padding: 6vh;
+}
+
+.indent {
+	padding-left: 2vh;
+}
+
+main {
+	font-size: 2.25vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	grid-area: main;
+}
