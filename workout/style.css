@@ -37,11 +37,6 @@ ul {
 						 "footer footer footer"
 }
 
-.bike,
-.strength {
-	font-weight: 600;
-}
-
 header {
 	display: flex;
 	align-items: center;
