@@ -59,7 +59,7 @@ const activation = {
 		},
 		{
 			movement: 'single-leg glute bridges', 
-			measureText: '20 reps, ',
+			measureText: '15 reps each, ',
 		},
 	],
 }
@@ -98,10 +98,10 @@ const strength = {
 	push: [
 		{
 			movement: 'pushups',
-			quantity: 10,
+			quantity: 8,
 			measure: 'reps',
 			type: 1,
-			displayText: ['10 reps'],
+			displayText: ['8 reps'],
 		},
 		{
 			movement: 'bench press',
@@ -145,10 +145,10 @@ const strength = {
 	],
 	hinge: [
 		{
-			movement: 'RDLs',
+			movement: 'kettlebell RDLs',
 			quantity: 15,
 			measure: 'reps', 
-			type: 2,
+			type: 1,
 			displayText: ['15 reps'],
 		},
 	],
@@ -171,7 +171,7 @@ const strength = {
 			movement: 'split squats',
 			quantity: 15,
 			measure: 'reps each side', 
-			type: 2,
+			type: 1,
 			displayText: ['15 reps'],
 		},
 	],
@@ -185,10 +185,10 @@ const strength = {
 		},
 		{
 			movement: 'front-loaded carry',
-			quantity: 20,
+			quantity: 30,
 			measure: 'steps', 
 			type: 1,
-			displayText: ['20 steps'],
+			displayText: ['30 steps'],
 		},
 	],
 }
