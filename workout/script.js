@@ -65,7 +65,7 @@ const activation = {
 }
 
 const cardio = {
-	primary: ['elliptical', 'bike'],
+	primary: ['elliptical'],
 	accessory: [
 		{
 			movement: 'pushups', 
@@ -451,6 +451,20 @@ function displayWorkout() {
 
 displayWorkout();
 
+function toggleSideBar(e) {
+	console.log(e.target);
+}
+
+const sidebar = document.getElementById('sidebar');
+
+const menu = document.getElementById('menu');
+menu.addEventListener('click', function() {
+	if (sidebar.style.display === 'block') {
+		sidebar.style.display = 'none';
+	} else {
+		sidebar.style.display = 'block';
+	}
+});
 
 // testing tools
 
