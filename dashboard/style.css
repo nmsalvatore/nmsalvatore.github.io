@@ -56,7 +56,6 @@ ul {
     grid-area: header;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 7.5vh;
 }
 
 #fitness {
@@ -89,6 +88,7 @@ ul {
 /* -------- tasks -------- */
 
 #tasks {
+    display: none;
     grid-area: tasks;
     padding: 6.1vh 7.5vh;
     background: #f4f4f4;
@@ -256,18 +256,14 @@ ul {
 
 @media only screen and (max-width: 1200px) {
   .site_layout {
-    grid-template-rows: 5vh repeat(2, 1fr) 15vh;
-    grid-template-columns: 1fr;
-    grid-template-areas: "header"
-                         "fitness"
-                         "tasks"
-                         "footer";
+    display: flex;
+    justify-content: center;
     height: 100%;
   }
 
   #fitness {
-    height: 85vh;
-    padding-bottom: 5vh;
+    height: 100vh;
+    padding-bottom: 15vh;
   }
 
   #tasks {
