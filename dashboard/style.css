@@ -1,0 +1,289 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #eee;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 2.25vh;
+    color: #233;
+}
+
+h1 {
+  color: #233;
+  font-family: 'Roboto Slab';
+  font-size: 2.8vh;
+}
+
+h2 {
+    font-family: 'Roboto Slab';
+    font-size: 2.8vh;
+    padding-bottom: 3vh;
+}
+
+h3 {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.site_layout {
+    display: grid;
+    grid-template-rows: 10vh repeat(3, 1fr) 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "header tasks"
+                         "fitness tasks"
+                         "fitness tasks"
+                         "fitness tasks"
+                         "footer tasks";
+
+    height: 100vh;
+}
+
+#header,
+#fitness,
+#tasks,
+#footer {
+    display: flex;
+}
+
+#header {
+    grid-area: header;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 7.5vh;
+}
+
+#fitness {
+    grid-area: fitness;
+    flex-direction: column;
+    padding: 7.5vh;
+}
+
+#fitness #wod_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+#fitness .nav_list {
+    display: flex;
+    justify-content: center;
+}
+
+#fitness .nav_item {
+    display: inline-block;
+    padding: 0.75vh 1vh;
+    margin: 0 1vh;
+}
+
+/* -------- tasks -------- */
+
+#tasks {
+    grid-area: tasks;
+    padding: 6.1vh 7.5vh;
+    background: #f4f4f4;
+    border-left: 1px solid #ddd;
+}
+
+.add-task_container {
+    position: relative;
+    left: -0.4vh;
+    height: 7.5vh;
+}
+
+.add-task_container > * {
+    display: inline-block;
+}
+
+.add-outline {
+    position: relative;
+    font-size: 3vh;
+    color: #233;
+    top: 1.5vh;
+}
+
+.add-task_text {
+    position: relative;
+    top: 1vh;
+    right: -1vh;
+    font-size: 2.2vh;
+    color: #999;
+}
+
+
+.add-task_text:hover {
+    cursor: pointer;
+    color: #233;
+}
+
+
+/* ----- other stuff ----- */
+
+#footer {
+    grid-area: footer;
+}
+
+#mobility-btn,
+#workout-btn {
+    cursor: pointer;
+}
+
+.active {
+    border-bottom: 2px solid #233;
+    font-weight: 700;
+}
+
+
+.movement {
+    padding: 0.5vh 2vh;
+}
+
+.movement-list-header {
+    padding: 2vh 0;
+}
+
+.warmup {
+    padding-bottom: 2vh;
+}
+
+.cooldown {
+    padding-top: 4vh;
+}
+/* ----- task panda ----- */
+
+#task-input {
+  display: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: inherit;
+  background: #fff;
+  padding: 2vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#task-input:focus {
+  outline: none;
+}
+
+#task-input::placeholder {
+    font-size: 2vh;
+}
+
+#task-list {
+  border-radius: 10px;
+  font-weight: 400;
+  list-style: none;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+#weekly-tasks {
+    width: 100%;
+}
+
+.task-item {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 0;
+  position: relative;
+  width: 100%;
+}
+
+.task-item label {
+  cursor: default;
+  user-select: none;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+#delete-btn {
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.8rem;
+  padding-left: 3rem;
+}
+
+#empty-tasks-notice {
+  color: #666;
+  align-self: center;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: 15vh;
+}
+
+#empty-tasks-notice i {
+  color: #ddd;
+  font-size: 7rem;
+}
+
+#empty-tasks-notice img {
+  padding-bottom: 1rem;
+  height: 80px;
+}
+
+.edit-mode {
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  outline: none;
+  font: inherit;
+  display: none;
+  padding: 1rem;
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+@media only screen and (max-width: 1200px) {
+  .site_layout {
+    grid-template-rows: 5vh repeat(2, 1fr) 15vh;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header"
+                         "fitness"
+                         "tasks"
+                         "footer";
+    height: 100%;
+  }
+
+  #fitness {
+    height: 85vh;
+    padding-bottom: 5vh;
+  }
+
+  #tasks {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+  @media only screen and (max-width: 480px) {
+    #tasks,
+    #wod {
+        font-size: 1.75vh;
+    }
+
+    #tasks {
+        padding: 0 5vh;
+    }
+  }
+}
