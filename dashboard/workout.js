@@ -97,43 +97,43 @@ const strength = {
 
 const mobility = {
     overhead: [ 
-        { movement: 'arms extended overhead',
-          measure: '5 breaths', },
+      { movement: 'arms extended overhead',
+        measure: '10 seconds', },
+      { movement: 'side bend',
+        measure: '10 seconds, each side', },
     ],
     chest: [ 
-        { movement: 'straight arms, upper back contraction',
-          measure: '5 breaths' },
-        { movement: 'bent arms, upper back contraction',
-          measure: '5 breaths' },
+      { movement: 'straight arms, upper back contraction',
+        measure: '10 seconds' },
+      { movement: 'bent arms, upper back contraction',
+        measure: '10 seconds' },
     ],
     frack: [ 
-        { movement: 'front rack',
-          measure: '5 breaths', },
+      { movement: 'front rack',
+        measure: '10 seconds', },
     ],
     squat: [ 
-        { movement: 'lizard stretch', 
-          measure: '10 breaths, each side' },
-        { movement: 'pigeon stretch',
-          measure: '10 breaths, each side' },
-        { movement: 'bodyweight squat',
-          measure: '20 seconds', }
+      { movement: 'lizard stretch', 
+        measure: '20 seconds, each side' },
+      { movement: 'pigeon stretch',
+        measure: '20 seconds, each side' },
+      { movement: 'bodyweight squat',
+        measure: '20 seconds', }
     ],
-    lunge: [
-        { movement: 'cobra stretch', 
-          measure: '5 breaths' },
-        { movement: 'samson stretch',
-          measure: '10 breaths, each side' },
-        { movement: 'samson stretch',
-          measure: '10 breaths, each side' },
+  lunge: [
+      { movement: 'cobra stretch', 
+        measure: '10 seconds' },
+      { movement: 'samson stretch',
+        measure: '20 seconds, each side' },
+      { movement: 'quad stretch',
+        measure: '10 seconds, each side' },
     ],
-    lunge: [
-        { movement: 'cobra stretch', 
-          measure: '5 breaths' },
-        { movement: 'samson stretch',
-          measure: '10 breaths, each side' },
-        { movement: 'samson stretch',
-          measure: '10 breaths, each side' },
-    ],
+  hamstrings: [
+      { movement: 'forward bend', 
+        measure: '10 seconds' },
+      { movement: 'cobra stretch', 
+          measure: '10 seconds' },
+    ]
 }
 
 const strengthFinal = [];
