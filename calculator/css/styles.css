@@ -2,7 +2,7 @@
       global styles
    ------------------- */
 :root {
-  --white: #fff;
+  --white: "white";
   --lt-green: #a3cfbe;
   --drk-green: #33584a;
   --lt-blue: #a3cacf;
