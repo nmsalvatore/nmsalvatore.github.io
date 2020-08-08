@@ -40,7 +40,7 @@ const renderWorkout = (workout = getRandomWorkout()) => {
     const ul = document.createElement('ul');
     const li = document.createElement('li');
     
-    li.textContent = '3 rounds:';
+    li.textContent = '4 rounds:';
     ul.appendChild(li);
 
     for (let movement of workout) {

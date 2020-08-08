@@ -1,5 +1,6 @@
 :root {
-    --bg-color: #ffc;
+    --bg-color: #fff;
+    --font-color: #222;
     --black: #222;
 }
 
@@ -13,16 +14,15 @@ body {
     justify-content: center;
     align-items: center;
 
-    color: var(--black);
+    color: var(--font-color);
     background: var(--bg-color);
 
     height: 100vh;
 }
 
 ul {
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: 'Open Sans','Helvetica Neue', Helvetica, sans-serif;
     font-size: 4.5vw;
-    font-weight: 500;
     list-style-type: none;
     margin-bottom: 1rem;
 }
@@ -31,6 +31,7 @@ ul li:first-child {
     padding-bottom: 1.2rem;
     position: relative;
     left: -1rem;
+    font-family: 'Roboto Slab', serif;
     font-weight: 600;
 }
 
