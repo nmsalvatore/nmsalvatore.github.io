@@ -57,10 +57,19 @@ const getMovements = () => {
     const sets = Object.keys(movements);
     const arr = [];
 
-    for (let set of sets) {
+    for (let i = 0; i < sets.length; i++) {
+        const set = sets[i];
         const movement = getMovement(movements[set]);
 
         if (arr.includes(movement)) continue;
+
+        if (movement === 'split squats' || movement === 'lunges') {
+            if (arr.includes('split squats') || arr.includes('lunges')) {
+                console.log('working');
+                i--;
+                continue;
+            }
+        }
 
         arr.push(movement);
     }
