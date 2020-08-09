@@ -1,5 +1,5 @@
 import { renderWorkout } from './workout.js';
-import { renderBackground, renderFont } from './background.js';
+import { renderBackground, renderFont } from './colors.js';
 import { checkForSameDay } from './date.js';
 
 const isSameDay = checkForSameDay();

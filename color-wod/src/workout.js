@@ -7,34 +7,75 @@ const warmup = [
     '40 glute bridges',
 ]
 
-const workouts = [
-    [
-        '10 pushups',
-        '20 good mornings',
-        '30 air squats',
+const movements = {
+    tens: [
+        'pushups',
+        'diamond pushups',
+        'wide pushups',
     ],
-    [
-        '10 diamond pushups',
-        '20 deadlifts',
-        '30 box squats',
+    twenties: [
+        'air squats', 
+        'good mornings', 
+        'box squats', 
+        'deadlifts', 
+        'split squats', 
+        'lunges', 
+        'box step-ups',
     ],
-    [
-        '10 wide pushups',
-        '20 air squats',
-        '30 box step-ups',
+    thirties: [
+        'air squats',
+        'box step-ups',
+        'box squats',
+        'lunges',
     ],
-]
-
-const getRandomWorkout = () => {
-    const index = Math.floor(Math.random() * workouts.length);
-    const workout = workouts[index];
-
-    localStorage.setItem('workout', JSON.stringify(workout));
-
-    return workout;
 }
 
-const renderWorkout = (workout = getRandomWorkout()) => {
+const createWod = () => {
+    const movements = getMovements();
+    const wod = [];
+
+    let reps = 10;
+
+    if (movements.length === 3) {
+        for (let movement of movements) {
+            wod.push(reps + ' ' + movement);
+            reps += 10;
+        }
+    } else if (movements.length === 2) {
+        for (let movement of movements) {
+            wod.push(reps + ' ' + movement);
+            reps = 50;
+        }
+    }
+
+    localStorage.setItem('workout', JSON.stringify(wod));
+
+    return wod;
+}
+
+const getMovements = () => {
+    const sets = Object.keys(movements);
+    const arr = [];
+
+    for (let set of sets) {
+        const movement = getMovement(movements[set]);
+
+        if (arr.includes(movement)) continue;
+
+        arr.push(movement);
+    }
+    
+    return arr;
+}
+
+const getMovement = (set) => {
+    const index = Math.floor(Math.random() * set.length);
+    const movement = set[index];
+
+    return movement;
+}
+
+const renderWorkout = (workout = createWod()) => {
     renderWarmup();
 
     const ul = document.createElement('ul');
